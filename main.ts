@@ -15,8 +15,8 @@ interface Note {
 
 const setItem = async (note: Omit<Note, 'id'>) => {
   await connection.execute(
-    'INSERT INTO sample_table (note) VALUES (?)',
-    [note.note]
+      'INSERT INTO sample_table (note) VALUES (?)',
+      [note.note]
   )
 }
 
