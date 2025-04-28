@@ -6,7 +6,10 @@ export const addNote = async (c: Context) => {
     const note = await NoteService.setItem(noteDetails);
     return c.json({ message: `New note added successfully!`, note });
 }
-
+export const getAllNotes = async (c: Context) => {
+  const notes = await NoteService.getAllItems();
+  return c.json(notes);
+}
 export const getNote = async (c: Context) => {
     const id = parseInt(c.req.param('id') || '', 10);
   if (isNaN(id)) {
