@@ -9,6 +9,10 @@ export const setItem = async (note: Omit<Note, 'id'>): Promise<Note> => {
     const insertedId = result.lastInsertId as number;
     return { id: insertedId, ...note };
 }
+export const getAllItems = async (): Promise<Note[]> => {
+  const result = await connection.query("SELECT * FROM sample_table");
+  return result as Note[];
+}
 
 export const getItem = async (id: number): Promise<Note| null> => {
     const result = await connection.query('SELECT * FROM sample_table WHERE id = ?', [id]);
